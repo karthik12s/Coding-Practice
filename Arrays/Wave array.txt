@@ -1,0 +1,12 @@
+void convertToWave(int *arr, int n){
+
+        // Your code here
+        int temp,i=0;
+        while(i<n-1){
+            temp = arr[i];
+            arr[i]=arr[i+1];
+            arr[i+1] = temp;
+            i = i+2;
+        }
+
+    }
