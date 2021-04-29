@@ -1,0 +1,20 @@
+void matchPairs(char nuts[], char bolts[], int n) {
+	    // code here
+	    set<char>nu;
+	    set<char>bo;
+	    for(int i=0;i<n;i++){
+	        nu.insert(nuts[i]);
+	        bo.insert(bolts[i]);
+	    }
+	    int i=0;
+	    for(auto itr = nu.begin();itr!=nu.end();itr++){
+	        nuts[i] = *itr;
+	        i++;
+	    }
+	    i=0;
+	    for(auto itr = bo.begin();itr!=bo.end();itr++){
+	        bolts[i] = *itr;
+	        i++;
+	    }
+
+	}

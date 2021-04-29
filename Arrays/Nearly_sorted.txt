@@ -1,0 +1,29 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int t,n,k,c;
+	cin>>t;
+	priority_queue<int,vector<int>,greater<int>>q;
+	for(int i=0;i<t;i++){
+	    cin>>n>>k;
+	    for(int i=0;i<k;i++){
+	        cin>>c;
+	        q.push(c);
+	    }
+	    for(int i =k;i<n;i++){
+	        cin>>c;
+	        cout<<q.top()<<" ";
+	        q.pop();
+	        q.push(c);
+	    }
+	    while(!q.empty()){
+	        cout<<q.top()<<" ";
+	        q.pop();
+	    }
+	    cout<<'\n';
+	}
+	return 0;
+}
