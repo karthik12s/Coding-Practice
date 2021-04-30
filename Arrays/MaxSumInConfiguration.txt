@@ -1,0 +1,12 @@
+int ps = 0, s=0, m = INT_MIN, n = N;
+    for(int i=1;i<n;i++){
+        ps = (A[i]*i)+ps;
+        s = s + A[i];
+    }
+    m = ps;
+    for(int i=1;i<n;i++){
+        ps = ps - s + (n-1)*A[i-1];
+        s = s - A[i] + A[i-1];
+        m = max(m,ps);
+    }
+    return m;

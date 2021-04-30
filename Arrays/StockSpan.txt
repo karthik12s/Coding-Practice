@@ -1,0 +1,27 @@
+vector <int> calculateSpan(int price[], int n)
+    {
+       // Your code here
+       vector<int>v(n,0);
+       int c1,c2;
+       stack<int>s;
+       int c=0;
+       for(int i=0;i<n;i++){
+           if(s.empty()){
+               v[i] = 1;
+           }
+           else{
+               c=0;
+               while(!s.empty()&&price[i]>=price[s.top()]){
+                   s.pop();
+               }
+               if(s.empty()){
+                   v[i] =i+1;
+               }
+               else{
+               v[i] = i - s.top();
+               }
+           }
+           s.push(i);
+       }
+       return v;
+    }
