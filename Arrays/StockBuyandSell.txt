@@ -1,0 +1,20 @@
+void stockBuySell(int price[], int n) {
+    // code here
+    int i=0,c=0;
+    while(i<n-1){
+        if(price[i]<price[i+1]){
+        cout<<'('<<i<<' ';
+        c++;
+        while(i<n-1 && price[i]<=price[i+1]){
+            i++;
+        }
+        cout<<(i)<<") ";
+        }
+        i++;
+    }
+    if(c==0){
+        cout<<"No Profit";
+    }
+    cout<<'\n';
+
+}
