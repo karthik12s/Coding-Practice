@@ -1,0 +1,30 @@
+bool find3Numbers(int A[], int n, int X)
+    {
+        //Your Code Here
+         sort(A,A+n);
+    int j=n-1,c=0;
+    while(A[j]>X){
+        j--;
+    }
+    j++;
+    c=j;
+    // for(int i =0;i<n;i++){
+    //     cout<<A[i]<<" ";
+    // }
+    for(int i=0;i<min(n-3,j-2);i++){
+
+        for(int k=i+1;k<min(n-2,j-1);k++){
+            c= min(j,n-1);
+            while(k<c&&A[i]+A[k]+A[c]>=X){
+                if(A[i]+A[k]+A[c]==X){
+                // cout<<A[i]<<' '<<A[k]<<' '<<A[c];
+                return true;
+            }
+                c--;
+            }
+
+            c++;
+        }
+    }
+    return false;
+    }

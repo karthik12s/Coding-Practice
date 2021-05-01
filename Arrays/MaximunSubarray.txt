@@ -1,0 +1,39 @@
+vector<int> findSubarray(int a[], int n) {
+	    // code here
+	    vector<vector<int>>v;
+	    int i=0,msum = -1,mi = 0,msize = 0,c=0;
+	    while(i<n){
+	        int s =0;
+	        vector<int>v1;
+	        if(a[i]>=0){
+	            while(i<n && a[i]>=0){
+	                v1.push_back(a[i]);
+	                s = s+a[i];
+	                i++;
+	            }
+	            v.push_back(v1);
+	            c++;
+	            if(s>msum){
+	                msum = s;
+	                mi = c-1;;
+	                msize = v[mi].size();
+	            }
+	            if(s==msum){
+	                if(msize< v[mi].size()){
+	                    msum = s;
+	                mi = c-1;
+	                msize = v[mi].size();
+	                }
+	            }
+	        }
+	        i++;
+	    }
+	   // for(auto i:v[0]){
+	   //     cout<<i<<'\n';
+	   // }
+	    if(v.size()==0){
+	        vector<int>a1(1,-1);
+	        return a1;
+	    }
+	    return v[mi];
+	}
