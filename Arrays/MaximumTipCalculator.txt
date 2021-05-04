@@ -1,0 +1,43 @@
+typedef pair<int,int> p;
+    long long maxTip(int a[], int b[], int n, int x, int y) {
+        // code here
+        priority_queue<p>ra,ank;
+        long long int mt =0,i=0;
+        while(i<n){
+            if(a[i]>b[i]){
+                ra.push(make_pair((a[i]-b[i]),i));
+            }
+            else if(a[i]==b[i]){
+                mt = mt + a[i];
+            }
+            else{
+                ank.push(make_pair((b[i]-a[i]),i));
+            }
+            i++;
+        }
+
+            while(!ank.empty()&&y>0){
+            mt = mt + b[ank.top().second];
+            ank.pop();
+            y--;
+            }
+            while(!ra.empty()&&x>0){
+            mt = mt + a[ra.top().second];
+            ra.pop();
+            x--;
+            }
+            while(y>0 && !ra.empty()){
+                mt = mt + b[ra.top().second];
+                ra.pop();
+                y--;
+            }
+            while(x>0 && !ank.empty()){
+                mt = mt + a[ank.top().second];
+                ank.pop();
+                x--;
+            }
+
+        // cout<<x<<' '<<y<<' '<<ra.size()<<' '<<ank.size();
+        return mt;
+
+    }
