@@ -1,0 +1,39 @@
+vector<int> findRange(string str, int n) {
+        // code here
+      int i=0,j=0,m=0,im=-1,jm=-1,mm=0;
+      while(j<n){
+          while(j<n&&m>=0){
+              if(str[j]=='1'){
+                  m--;
+              }
+              else{
+                  m++;
+              }
+
+              if(m>mm){
+                //   cout<<m<<'\n';
+                  im = i;
+                  jm = j;
+                  mm = m;
+              }
+              j++;
+          }
+          while(m<0){
+              if(str[i]=='1'){
+                  m++;
+              }
+              else{
+                  m--;
+              }
+              i++;
+          }
+      }
+      if(im==-1&&jm==-1){
+          vector<int>v(1,-1);
+          return v;
+      }
+      vector<int>v;
+      v.push_back(im+1);
+      v.push_back(jm+1);
+      return v;
+    }
