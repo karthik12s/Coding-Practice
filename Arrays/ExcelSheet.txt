@@ -1,0 +1,10 @@
+string ExcelColumn(int N)
+    {
+        // Your code goes here
+        string s="";
+       while(N>0){
+           s = char('A'+((N-1)%26))+s;
+           N=(N-1)/26;
+       }
+       return s;
+    }
