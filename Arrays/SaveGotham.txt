@@ -1,0 +1,25 @@
+typedef pair<int,int>p;
+int save_gotham(int arr[], int n)
+{
+    // Complete the function
+    stack<p>s,s1;
+    long long int sum=0;
+    int i=0;
+    while(i<n){
+        if(s.empty()){
+            s.push(make_pair(arr[i],i));
+        }
+        else{
+        while(!s.empty()&&s.top().first<arr[i]){
+            p num = s.top();
+            s.pop();
+            arr[num.second] = arr[i];
+            sum = (sum%1000000001 + arr[i]%1000000001)%1000000001;
+            // cout<<arr[i]<<'\n';
+        }
+        s.push(make_pair(arr[i],i));
+        }
+        i++;
+    }
+    return sum;
+}
