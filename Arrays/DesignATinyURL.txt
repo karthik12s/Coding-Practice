@@ -1,0 +1,10 @@
+string idToShortURL(long long int n) {
+	    // code here
+	    string st1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	    string st2 = "";
+	    while(n>0){
+	       st2 = st1[n%62]+st2;
+	        n = n/62;
+	    }
+	    return st2;
+	}
