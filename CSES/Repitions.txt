@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    long long int n,t1,count,cm=INT16_MIN;
+    // cin>>n;
+    string s;
+    getline(cin,s);
+    vector<char>v;
+    v.push_back('A');
+    v.push_back('C');
+    v.push_back('G');
+    v.push_back('T');
+    for(int j=0;j<4;j++){
+        long long int i=0;
+        while(i<s.length()){
+            count = 0;
+                if(s[i]==v[j]){
+                    while(s[i]==v[j]){
+                        count++;
+                        i++;
+                    }
+                }
+                i++;
+                cm = max(cm,count);
+        }
+    }
+    cout<<cm;
+}
