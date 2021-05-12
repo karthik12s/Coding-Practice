@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    long long int n,ans,t;
+    // cin>>n;
+    ans =0;
+    cin>>n;
+
+    long long int di = 5;
+    while(n >=di){
+        ans = ans + n/di;
+        di = di*5;
+    }
+    cout<<ans;
+
+}
