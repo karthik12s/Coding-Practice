@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    long long int n,ans,t;
+    // cin>>n;
+    ans =0;
+    cin>>n;
+    if(n%4==0){
+        cout<<"YES"<<'\n';
+        cout<<n/2<<'\n';
+        for(int i=0;i<n/4;i++){
+            cout<<i+1<<" "<<n-i<<" ";
+        }
+        cout<<'\n';
+        cout<<n/2<<'\n';
+        for(int i=n/4;i<n/2;i++){
+            cout<<i+1<<" "<<n-i<<" ";
+        }
+
+    }
+    else if(n%4==3)
+    {
+        cout<<"YES"<<'\n';
+        cout<<(n/4)*2+1<<'\n';
+        for(int i=0;i<n/4;i++){
+            cout<<i+1<<" "<<n-i-1<<" ";
+        }
+        cout<<n;
+        cout<<'\n';
+        cout<<((n/2)-(n/4))*2<<'\n';
+        for(int i=n/4;i<n/2;i++){
+            cout<<i+1<<" "<<n-i-1<<" ";
+        }
+    }
+    else{
+        cout<<"NO";
+    }
+
+}
