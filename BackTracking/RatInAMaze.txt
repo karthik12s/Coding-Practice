@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+int count1 = 0;
+void display(vector<vector<bool>>&v){
+    for(int i=0;i<v.size();i++){
+        for(int j=0;j<v.size();j++){
+            if(v[i][j]==true){
+                cout<<"Q ";
+            }
+            else{
+                cout<<". ";
+            }
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    cout<<endl;
+}
+bool isSafe(vector<vector<bool>>&v,int r,int c,vector<vector<int>>&maze){
+    if(r>=0 && r<maze.size() && c>=0 && c<maze.size() && maze[r][c]!=1 && v[r][c]!=true){
+            return true;
+    }
+    return false;
+}
+void Ratinmaze(vector<vector<bool>>&v,int r,int c,int n,vector<vector<int>>&maze){
+    if(r == n-1 && c == n-1){
+        display(v);
+        count1++;
+        return ;
+    }
+    if(isSafe(v,r,c,maze)){
+        v[r][c] = true;
+        Ratinmaze(v,r+1,c,n,maze);
+        Ratinmaze(v,r,c+1,n,maze);
+        Ratinmaze(v,r-1,c,n,maze);
+        Ratinmaze(v,r,c-1,n,maze);
+        v[r][c] = false;
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<bool>v1(n,false);
+    vector<vector<bool>>v(n,v1);
+    vector<int>m1(n,0);
+    vector<vector<int>>m(n,m1);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cin>>m[i][j];
+        }
+    }
+    Ratinmaze(v,0,0,n,m);
+    cout<<count1;
+}
