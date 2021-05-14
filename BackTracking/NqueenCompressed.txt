@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+bitset<100>b1;
+vector<bitset<100>>v2(3,b1);
+void display(vector<vector<bool>>&v){
+    for(int i=0;i<v.size();i++){
+        for(int j=0;j<v.size();j++){
+            if(v[i][j]==true){
+                cout<<"Q ";
+            }
+            else{
+                cout<<". ";
+            }
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    cout<<endl;
+}
+bool isSafe(vector<vector<bool>>&v,int r,int c,vector<bitset<100>> &v2){
+
+    if(v2[0][c] ==1 || v2[1][r-c+v.size()-1] ==1 || v2[2][r+c]==1){
+        // cout<<r<<c<<'\n';
+        return false;
+    }
+    // for(int i=r;i>=0;i--){
+    //     if(v[i][c]==true){
+    //         return false;
+    //     }
+    // }
+    // int i =r;
+    // int j=c;
+    // while(i>=0 && j>=0){
+    //     if(v[i][j]==true){
+    //         return false;
+    //     }
+    //     i--;
+    //     j--;
+    // }
+    // i=r;
+    // j=c;
+    //  while(i>=0 && j<v.size()){
+    //     if(v[i][j]==true){
+    //         return false;
+    //     }
+    //     i--;
+    //     j++;
+    // }
+    return true;
+
+}
+void NQueens(vector<vector<bool>>&v,int r,int c,int n){
+    if(r == n){
+        display(v);
+        return ;
+    }
+    for(int j=0;j<v.size();j++){
+        if(isSafe(v,r,j,v2)){
+            v[r][j]  =true;
+            // cout<<r<<j<<'\n';
+            v2[0][j] = v2[1][r-j+n-1] = v2[2][r+j] = 1;
+            NQueens(v,r+1,0,n);
+            v2[0][j] = v2[1][r-j+n-1] = v2[2][r+j] = 0;
+            v[r][j]  =false;
+        }
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+
+    // cout<<v2[0][0];
+    vector<bool>v1(n,false);
+    vector<vector<bool>>v(n,v1);
+    NQueens(v,0,0,n);
+}
