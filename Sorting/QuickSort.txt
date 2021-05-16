@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool f =false;
+int partitionarr(vector<int>&v,int lo,int hi){
+    int m = lo;
+    for(int i=lo;i<hi;i++){
+        if(v[i]<v[hi]){
+            swap(v[i],v[m]);
+            m++;
+        }
+    }
+    swap(v[m],v[hi]);
+    return m;
+}
+int randompoint(vector<int>&v,int lo,int hi){
+    int n= rand();
+    int pivot = lo + (n%(hi-lo+1));
+    swap(v[pivot],v[hi]);
+    int m = partitionarr(v,lo,hi);
+    return m;
+}
+void Quicksort(vector<int> &v,int lo, int hi){
+    if(lo<hi){
+        int pivot = randompoint(v,lo,hi);
+        Quicksort(v,lo,pivot-1);
+        Quicksort(v,pivot+1,hi);
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    Quicksort(v,0,n-1);
+    for(int i=0;i<n;i++){
+        cout<<v[i]<<" ";
+    }
+
+}
