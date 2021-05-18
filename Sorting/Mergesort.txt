@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    unordered_map<int,int>m;
+    long long int n;
+    cin>>n;
+    long long int c=0;
+    vector<long long int>v(n,-1);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+        if(m.find(v[i])!=m.end()){
+            m[v[i]]++;
+        }
+        else{
+            m[v[i]] = 1;
+            c++;
+        }
+    }
+    
+    cout<<m[20];
+    cout<<c;
+}
