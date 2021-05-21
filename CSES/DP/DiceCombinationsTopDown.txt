@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int fincomb(vector<long long int> &val,int n){
+    long long int mod = 1000000007;
+    if(n<0){
+        return 0;
+    }
+    if(val[n]!=0){
+        return val[n];
+    }
+    int c=0;
+    for(int i=1;i<7;i++){
+        c = (c%mod + fincomb(val,n-i)%mod)%mod;
+    }
+    val[n] = c;
+    // cout<<c<<" "<<num<<'\n';
+    return c;
+}
+int main(){
+    long long int n,num,c=0;
+    long long int mod = 1000000007;
+    cin>>n;
+    vector<long long int> val(n+1,0);
+    // long long int val[num+1] = {0};
+    val[0] = 1;
+    c = fincomb(val,n);
+    cout<<(c%mod)<<endl;
+    // cout<<val[1000]<<val[500];
+}
