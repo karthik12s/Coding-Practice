@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int fincomb(vector<long long int> &arr,vector<long long int> &val,int num,int n){
+    long long int mod = 1000000007;
+    if(num<0){
+        return INT_MAX;
+    }
+    if(val[num]!=INT_MAX){
+        return val[num];
+    }
+    if(num<arr[0]){
+        return INT_MAX;
+    }
+    long long int c=INT_MAX;
+    for(int i=0;i<n;i++){
+        c = min(c, fincomb(arr,val,num-arr[i],n)%mod);
+    }
+    c++;
+    val[num] = c;
+    return c;
+}
+int main(){
+    long long int n,num,c=0;
+    long long int mod = 1000000007;
+    cin>>n>>num;
+    vector<long long int>arr(n,0);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr.begin(),arr.end());
+    vector<long long int> val(num+1,INT_MAX);
+    val[0] = 1;
+    c = fincomb(arr,val,num,n);
+    if(c%mod>=INT_MAX%mod){
+        c=0;
+    }
+    c--;
+    cout<<(c%mod)<<endl;
+
+
+}
