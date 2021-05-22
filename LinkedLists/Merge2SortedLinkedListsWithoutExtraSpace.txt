@@ -1,0 +1,38 @@
+Node *a = head1;
+    Node *b = head2;
+    Node *curra = a;
+    Node*currb = b;
+    Node *head;
+    Node *curr;
+    if(a->data>b->data){
+        head = b;
+        curr = b;
+        b = b->next;
+    }
+    else{
+        head = a;
+        curr = a;
+        a = a->next;
+    }
+    while(a!=NULL && b!=NULL){
+        if(a->data>b->data){
+        curr->next = b;
+        b = b->next;
+    }
+    else{
+        curr->next = a;
+        a = a->next;
+    }
+    curr = curr->next;
+    }
+    while(a!=NULL){
+         curr->next = a;
+        a = a->next;
+        curr = curr->next;
+    }
+    while(b!=NULL){
+         curr->next = b;
+        b = b->next;
+        curr = curr->next;
+    }
+    return head;

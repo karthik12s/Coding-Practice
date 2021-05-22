@@ -1,0 +1,35 @@
+//https://www.spoj.com/problems/GNYR09F/
+#include<bits/stdc++.h>
+using namespace std;
+int dp[105][105][2]={-1};
+long long int adjbc(int n,int k,int f){
+    if(n==0){
+        return 0;
+    }
+    if(n==1){
+        if(k==1){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    long long int res = -1;
+    if(f==0){
+        res = adjbc(n-1,k,0)+adjbc(n-1,k,0);
+    }
+    else{
+        res = adjbc(n-1,k-1,1)+adjbc(n-1,k,1);
+    }
+    return res;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int num,n,k;
+        cin>>num>>n>>k;
+        long long int ans = adjbc(n,k,0)+adjbc(n,k,1);
+        cout<<num<<" "<<ans;
+    }
+}
