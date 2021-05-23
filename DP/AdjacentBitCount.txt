@@ -29,6 +29,7 @@ int main(){
     while(t--){
         int num,n,k;
         cin>>num>>n>>k;
+        dp[105][105][2]={-1};
         long long int ans = adjbc(n,k,0)+adjbc(n,k,1);
         cout<<num<<" "<<ans;
     }
