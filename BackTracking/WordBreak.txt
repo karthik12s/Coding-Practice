@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string>words;
+void wordbreak(string s,vector<string>v,int i,vector<string>& dict,int n){
+    if(i==n){
+    	// cout<<1;
+        string s1 = "";
+        for(int i=0;i<v.size();i++){
+        	// cout<<v[i]<<" ";
+            s1 = s1 + v[i];
+            if(i!=v.size()-1){
+                 s1 = s1 + " ";
+            }
+        }
+        words.push_back(s1);
+        return;
+    }
+    for(int j=0;j<dict.size();j++){
+        int k=0,cac = i;
+
+        while(k<dict[j].size()&&i<s.size()&&dict[j][k]==s[i]){
+            k++;
+            i++;
+        }
+        // cout<<dict[j]<<" "<<i<<" "<<k<<endl;
+        if(k==dict[j].size()){
+        	// cout<<dict[j]<<" "<<k<<" "<<i<<" "<<n<<'\n';
+            v.push_back(dict[j]);
+            wordbreak(s,v,i,dict,n);
+            v.pop_back();
+
+        }
+        i = cac;
+    }
+    return;
+
+}
+int main(){
+        int n;
+        cin>>n;
+        string s,s1;
+        cin>>s;
+        // cout<<s;
+        vector<string>dict;
+        for(int i=0;i<n;i++){
+            cin>>s1;
+            dict.push_back(s1);
+        }
+        vector<string>v;
+        wordbreak(s,v,0,dict,s.size());
+        for(auto i:words){
+            cout<<i<<'\n';
+        }
+}
