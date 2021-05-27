@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<vector<int>>v;
+void findcombin(vector<int>&num,vector<int>&A,int B,int j){
+    if(B==0){
+        v.push_back(num);
+        return;
+    }
+    if(B<0){
+        return;
+    }
+    if(j==A.size()){
+        return ;
+    }
+    for(int i=j;i<A.size();i++){
+        num.push_back(A[i]);
+        if(B-A[i]==0){
+            cout<<i<<j<<endl;
+        }
+        findcombin(num,A,B-A[i],i);
+        num.pop_back();
+    }
+}
+int main(){
+    int n,B;
+    cin>>n;
+    vector<int>A(n,0);
+    for(int i=0;i<n;i++){
+        cin>>A[i];
+    }
+    cin>>B;
+    sort(A.begin(),A.end());
+    A.erase(unique(A.begin(),A.end()),A.end());
+    vector<int>num;
+    sort(A.begin(),A.end());
+    findcombin(num,A,B,0);
+    for(auto i:v){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+}
