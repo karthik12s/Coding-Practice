@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<string>v;
+void permute(vector<char>&chars,int i){
+    if(i==chars.size()){
+        string s1 = "";
+        for(int j=0;j<chars.size();j++){
+            s1 = s1 + chars[j];
+        }
+        v.push_back(s1);
+        return ;
+    }
+    for(int j=i;j<chars.size();j++){
+        swap(chars[i],chars[j]);
+        permute(chars,i+1);
+        swap(chars[i],chars[j]);
+    }
+}
+int main(){
+    string s;
+    cin>>s;
+    vector<char>chars;
+    for(auto i :s){
+        chars.push_back(i);
+    }
+    permute(chars,0);
+    sort(v.begin(),v.end());
+    for(auto i:v){
+        cout<<i<<'\n';
+    }
+}
