@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+
+        for(int i = nums.size()-2;i>=0;i--){
+
+            if(nums[i]<nums[i+1]){
+                int minind = i+1;
+                for(int j=i+2;j<nums.size();j++){
+                    if(nums[j]<nums[minind] && nums[j]>nums[i]){
+                        minind = j;
+                    }
+                }
+                swap(nums[i],nums[minind]);
+                sort(nums.begin()+(i+1),nums.end());
+                return;
+            }
+            // if(nums[i]<nums[minind]){
+            //     minind = i;
+            // }
+        }
+        sort(nums.begin(),nums.end());
+    }
+};
