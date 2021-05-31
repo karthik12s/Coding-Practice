@@ -1,0 +1,16 @@
+int maxProfit(vector<int>& prices) {
+        int hi = prices[0],low = prices[0];
+        int maxhigh = 0;
+        for(int i=1;i<prices.size();i++){
+            if(prices[i]>hi){
+                hi = prices[i];
+            }
+            if(prices[i]<low){
+                maxhigh = max(maxhigh,hi-low);
+                hi = prices[i];
+                low = prices[i];
+            }
+        }
+        maxhigh = max(maxhigh,hi-low);
+        return maxhigh;
+    }
